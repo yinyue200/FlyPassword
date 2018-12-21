@@ -5,10 +5,23 @@
     xmlns:local="using:FlyPassword.UWP.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodels="using:FlyPassword.UWP.ViewModels"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <ListView SelectionMode="None">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="viewmodels:PasswordRecordEntryViewModel">
+                    <StackPanel>
+                        <TextBlock Text="{x:Bind DisplayName}" FontSize="{StaticResource ListViewHeaderItemThemeFontSize}" Foreground="{StaticResource ApplicationForegroundThemeBrush}"/>
+                        <TextBlock Text="{x:Bind DisplayValue}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <CommandBar VerticalAlignment="Bottom">
+            <AppBarButton Icon="Edit"></AppBarButton>
+        </CommandBar>
     </Grid>
 </Page>
