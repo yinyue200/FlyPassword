@@ -34,7 +34,7 @@ namespace FlyPassword.UWP.Pages
         }
         private PasswordRecordViewModel _lastSelectedItem;
         IEnumerable<Record> records;
-        RangedObservableCollection<PasswordRecordViewModelGroup> observablerecords = new RangedObservableCollection<PasswordRecordViewModelGroup>();
+        ObservableCollection<PasswordRecordViewModelGroup> observablerecords = new ObservableCollection<PasswordRecordViewModelGroup>();
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -55,9 +55,9 @@ namespace FlyPassword.UWP.Pages
             // Sometimes, this content will be animated as part of the page transition.
             DisableContentTransitions();
         }
-        RangedObservableCollection<T> ct<T>(IEnumerable<T> ts)
+        ObservableCollection<T> ct<T>(IEnumerable<T> ts)
         {
-            var a = new RangedObservableCollection<T>();
+            var a = new ObservableCollection<T>();
             a.AddRange(ts);
             return a;
         }

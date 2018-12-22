@@ -11,6 +11,11 @@ namespace FlyPassword.UWP.Core
 {
     static class TmpData
     {
+        public static void AddRange<T>(this System.Collections.ObjectModel.ObservableCollection<T> os, IEnumerable<T> tts)
+        {
+            foreach (var one in tts)
+                os.Add(one);
+        }
         internal static string Password { get; set; }
         public static DataLoader DataLoader = DataLoader.Create();
         public static CorePasswordKeeper.PasswordKeeper PasswordKeeper { get; set; }
