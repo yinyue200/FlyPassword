@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FlyPassword.UWP.Core;
+using Windows.UI.Popups;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -45,7 +46,7 @@ namespace FlyPassword.UWP.Pages
         {
             if (args.IsSettingsInvoked)
             {
-
+                contentFrame.Navigate(typeof(AboutPage));
             }
             else
             {
@@ -61,6 +62,7 @@ namespace FlyPassword.UWP.Pages
                 else if (args.InvokedItemContainer == folder)
                 {
                     //todo
+                    _ = new MessageDialog(TmpData.loader.GetString("indevelopment")).ShowAsync();
                 }
 
 
@@ -84,6 +86,14 @@ namespace FlyPassword.UWP.Pages
             if (addnewentrybt.SelectedIndex==0)
             {
                 contentFrame.Navigate(typeof(NewRecordPage));
+            }
+            else if (addnewentrybt.SelectedIndex == -1)
+            {
+                return;
+            }
+            else
+            {
+                _ = new MessageDialog(TmpData.loader.GetString("indevelopment")).ShowAsync();
             }
             addnewentrybt.SelectedIndex = -1;
 

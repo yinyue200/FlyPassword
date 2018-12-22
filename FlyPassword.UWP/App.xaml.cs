@@ -79,6 +79,7 @@ namespace FlyPassword.UWP
                     // configuring the new page by passing required information as a navigation
                     // parameter
                     var a = await (await Core.TmpData.GetPwdFileAsync()).GetBasicPropertiesAsync();
+                    //await Task.Delay(10);
                     if (a.Size == 0)
                     {
                         rootFrame.Navigate(typeof(Pages.WelcomePage), e.Arguments);

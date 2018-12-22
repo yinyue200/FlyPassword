@@ -34,16 +34,16 @@
                 <TextBlock Text="{x:Bind DisplayName}" Style="{ThemeResource BaseTextBlockStyle}" />
 
                 <TextBlock
-                    Text="TO BE ADDED"
+                    Text="{x:Bind Info}"
                     Grid.Row="1"
                     MaxLines="1"
                     Style="{ThemeResource ListBodyTextBlockStyle}" />
 
-                <TextBlock
+                <!--<TextBlock
                     Text="00:00"
                     Grid.Column="1"
                     Margin="12,1,0,0"
-                    Style="{ThemeResource ListCaptionAltTextblockStyle}" />
+                    Style="{ThemeResource ListCaptionAltTextblockStyle}" />-->
             </Grid>
         </DataTemplate>
 

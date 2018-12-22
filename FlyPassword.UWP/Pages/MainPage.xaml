@@ -19,11 +19,8 @@
         </NavigationView.MenuItems>
         <NavigationView.PaneFooter>
             <NavigationViewList x:Name="addnewentrybt" SelectionMode="Single" SelectionChanged="Addnewentrybt_SelectionChanged" >
-                <NavigationViewItem Icon="Add">
-                    
-                </NavigationViewItem>
-                <NavigationViewItem Icon="Crop">
-                    
+                <NavigationViewItem Icon="Add" Content="{xamlcore:Resw PropertyName=addentry}">
+
                 </NavigationViewItem>
                 <NavigationViewItem >
                     <NavigationViewItem.Icon>

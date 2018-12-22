@@ -14,9 +14,10 @@ namespace FlyPassword.UWP.ViewModels
         public string ItemId { get; private set; }
         public string DisplayName { get; private set; }
         public Record ORecord { get; set; }
+        public string Info { get; set; }
         public static PasswordRecordViewModel CreateFromRecord(Record record)
         {
-            return new PasswordRecordViewModel() { ItemId = record.Id, DisplayName = record.DisplayName,ORecord=record };
+            return new PasswordRecordViewModel() { ItemId = record.Id, DisplayName = record.DisplayName,ORecord=record,Info=string.Join("\n",record.RecordEntries.Where(a=>!a.IsSecret).Select(a=>a.Value)) };
         }
     }
     public class PasswordRecordViewModelGroup:IGrouping<string,PasswordRecordViewModel>

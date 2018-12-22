@@ -219,4 +219,7 @@
   <data name="namecannotbeempty" xml:space="preserve">
     <value>Name can not be empty</value>
   </data>
+  <data name="addentry" xml:space="preserve">
+    <value>Add new entry</value>
+  </data>
 </root>
