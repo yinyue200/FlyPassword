@@ -14,6 +14,7 @@ namespace FlyPassword.UWP.ViewModels
         public const string hidepwd = "●●●●●●";
         public Visibility PasswordBoxVisibility { get; private set; }
         public Visibility TextBoxVisibility { get; private set; }
+        public Visibility ShowPwdBtnVisibility { get; private set; }
         public string DisplayName { get; private set; }
 
 
@@ -40,14 +41,16 @@ namespace FlyPassword.UWP.ViewModels
 
         public static PasswordRecordEntryViewModel CreateFromRecordEntry(RecordEntry record)
         {
+            var pwdbtnbool = record.IsSecret && !string.IsNullOrEmpty(record.Value);
             return new PasswordRecordEntryViewModel()
             {
                 DisplayName = record.DisplayName,
-                DisplayValue = record.IsSecret? hidepwd : record.Value,
+                DisplayValue = pwdbtnbool ? hidepwd : record.Value,
                 Password = record.Value,
                 PasswordBoxVisibility = converttovisibility(record.IsSecret),
                 TextBoxVisibility = converttovisibility(!record.IsSecret),
-                IsPwdShowed=!record.IsSecret
+                IsPwdShowed = !record.IsSecret,
+                ShowPwdBtnVisibility = converttovisibility(pwdbtnbool)
             };
         }
         static Visibility converttovisibility(bool visibility)

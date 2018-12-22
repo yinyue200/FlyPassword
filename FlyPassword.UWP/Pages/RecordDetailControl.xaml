@@ -27,7 +27,7 @@
                                     <ColumnDefinition Width="auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{x:Bind DisplayValue,Mode=OneWay}"></TextBlock>
-                                <ToggleButton Grid.Column="1" IsChecked="{x:Bind IsPwdShowed}" Visibility="{x:Bind PasswordBoxVisibility}" Content="显示密码" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"></ToggleButton>
+                                <ToggleButton Grid.Column="1" IsChecked="{x:Bind IsPwdShowed}" Visibility="{x:Bind ShowPwdBtnVisibility}" Content="显示密码" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"></ToggleButton>
                             </Grid>
 
                             <StackPanel.ContextFlyout>
