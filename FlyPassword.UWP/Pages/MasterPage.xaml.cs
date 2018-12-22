@@ -14,6 +14,10 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FlyPassword.UWP.ViewModels;
 using Windows.UI.Xaml.Media.Animation;
+using CorePasswordKeeper;
+using FlyPassword.UWP.Core;
+using System.Collections.ObjectModel;
+using Windows.Globalization.Collation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -29,33 +33,21 @@ namespace FlyPassword.UWP.Pages
             this.InitializeComponent();
         }
         private PasswordRecordViewModel _lastSelectedItem;
-
+        IEnumerable<Record> records;
+        RangedObservableCollection<PasswordRecordViewModelGroup> observablerecords = new RangedObservableCollection<PasswordRecordViewModelGroup>();
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-
-            var items = MasterListView.ItemsSource as List<PasswordRecordViewModel>;
-
-            if (items == null)
+            records = e.Parameter as IEnumerable<Record>;
+            if (records == null)
             {
-                items = new List<PasswordRecordViewModel>();
-
-                //foreach (var item in ItemsDataSource.GetAllItems())
-                //{
-                //    items.Add(ItemViewModel.FromItem(item));
-                //}
-
-                MasterListView.ItemsSource = items;
+                records = TmpData.PasswordKeeper.Records;
             }
-
-            //if (e.Parameter != null)
-            //{
-            //    // Parameter is item ID
-            //    var id = (int)e.Parameter;
-            //    _lastSelectedItem =
-            //        items.Where((item) => item.ItemId == id).FirstOrDefault();
-            //}
+            CharacterGroupings groupings = new CharacterGroupings();
+            
+            observablerecords.AddRange(records.Select(a=> PasswordRecordViewModel.CreateFromRecord(a)).GroupBy((a) => groupings.Lookup(a.DisplayName))
+                .Select(a=>new PasswordRecordViewModelGroup(a.Key,ct(a))));
 
             UpdateForVisualState(AdaptiveStates.CurrentState);
 
@@ -63,7 +55,12 @@ namespace FlyPassword.UWP.Pages
             // Sometimes, this content will be animated as part of the page transition.
             DisableContentTransitions();
         }
-
+        RangedObservableCollection<T> ct<T>(IEnumerable<T> ts)
+        {
+            var a = new RangedObservableCollection<T>();
+            a.AddRange(ts);
+            return a;
+        }
         private void AdaptiveStates_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
         {
             UpdateForVisualState(e.NewState, e.OldState);
@@ -76,7 +73,7 @@ namespace FlyPassword.UWP.Pages
             if (isNarrow && oldState == DefaultState && _lastSelectedItem != null)
             {
                 // Resize down to the detail item. Don't play a transition.
-                Frame.Navigate(typeof(RecordDetailPage), _lastSelectedItem.ItemId, new SuppressNavigationTransitionInfo());
+                Frame.Navigate(typeof(RecordDetailPage), _lastSelectedItem, new SuppressNavigationTransitionInfo());
             }
 
             EntranceNavigationTransitionInfo.SetIsTargetElement(MasterListView, isNarrow);
@@ -100,6 +97,7 @@ namespace FlyPassword.UWP.Pages
             {
                 // Play a refresh animation when the user switches detail items.
                 EnableContentTransitions();
+
             }
         }
 

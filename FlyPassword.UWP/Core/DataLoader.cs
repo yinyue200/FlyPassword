@@ -9,9 +9,17 @@ using System.IO;
 
 namespace FlyPassword.UWP.Core
 {
-    static class DataManager
-    {       
-        public static async Task<PasswordKeeper> LoadFromFileAsync(IStorageFile storageFile,string password)
+    class DataLoader
+    {   
+        protected DataLoader()
+        {
+
+        }
+        public static DataLoader Create()
+        {
+            return new DataLoader();
+        }
+        public async Task<PasswordKeeper> LoadFromFileAsync(IStorageFile storageFile,string password)
         {
             using(var stream= await storageFile.OpenStreamForReadAsync())
             {
@@ -24,7 +32,7 @@ namespace FlyPassword.UWP.Core
                 }
             }
         }
-        public static async Task SaveToFileAsync(IStorageFile storageFile, string password,PasswordKeeper passwordKeeper)
+        public async Task SaveToFileAsync(IStorageFile storageFile, string password,PasswordKeeper passwordKeeper)
         {
             using (var stream = await storageFile.OpenStreamForWriteAsync())
             {

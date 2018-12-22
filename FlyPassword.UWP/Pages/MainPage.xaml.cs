@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using FlyPassword.UWP.Core;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -26,7 +27,18 @@ namespace FlyPassword.UWP.Pages
         {
             this.InitializeComponent();
         }
-
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (TmpData.PasswordKeeper != null)
+            {
+                System.Diagnostics.Debug.WriteLine(viewall.Parent);
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(PasswordInputPage));
+            }
+        }
         private void NvSample_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
@@ -35,7 +47,18 @@ namespace FlyPassword.UWP.Pages
             }
             else
             {
-                contentFrame.Navigate(typeof(MasterPage));
+                if (args.InvokedItemContainer == viewall)
+                {
+                    contentFrame.Navigate(typeof(MasterPage),TmpData.PasswordKeeper.Records);
+                }
+                else if (args.InvokedItemContainer == fav)
+                {
+                    contentFrame.Navigate(typeof(MasterPage), TmpData.PasswordKeeper.Records.Where(a=>a.Tags.Contains("_fav")).ToList());
+                }
+                else if (args.InvokedItemContainer == folder)
+                {
+                    //todo
+                }
             }
         }
 

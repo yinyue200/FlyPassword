@@ -9,12 +9,30 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="nvSample" ItemInvoked="NvSample_ItemInvoked" Loaded="NvSample_Loaded">
+    <NavigationView x:Name="nvSample"  ItemInvoked="NvSample_ItemInvoked" Loaded="NvSample_Loaded">
         <NavigationView.MenuItems>
-            <NavigationViewItem Icon="ViewAll" Content="{xamlcore:Resw PropertyName=mainpage_allitems}" Tag="SamplePage1" />
-            <NavigationViewItem Icon="Favorite" Content="{xamlcore:Resw PropertyName=mainpage_favitems}" Tag="SamplePage2" />
-            <NavigationViewItem Icon="Folder" Content="{xamlcore:Resw PropertyName=mainpage_folders}" Tag="SamplePage3" />
+            <NavigationViewItem x:Name="viewall" Icon="ViewAll" Content="{xamlcore:Resw PropertyName=mainpage_allitems}" Tag="SamplePage1" />
+            <NavigationViewItem x:Name="fav" Icon="Favorite" Content="{xamlcore:Resw PropertyName=mainpage_favitems}" Tag="SamplePage2" />
+            <NavigationViewItem x:Name="folder" Icon="Folder" Content="{xamlcore:Resw PropertyName=mainpage_folders}" Tag="SamplePage3" />
         </NavigationView.MenuItems>
+        <NavigationView.PaneFooter>
+            <NavigationViewList SelectionMode="Extended">
+                <NavigationViewItem Icon="Add">
+                    
+                </NavigationViewItem>
+                <NavigationViewItem Icon="Crop">
+                    
+                </NavigationViewItem>
+                <NavigationViewItem >
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE1F6;"></FontIcon>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Icon="Sync">
+                    
+                </NavigationViewItem>
+            </NavigationViewList>
+        </NavigationView.PaneFooter>
         <Frame x:Name="contentFrame"/>
     </NavigationView>
 </Page>

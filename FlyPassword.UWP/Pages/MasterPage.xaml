@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodels="using:FlyPassword.UWP.ViewModels"
+    xmlns:wuxdata="using:Windows.UI.Xaml.Data"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -16,6 +17,7 @@
     </Page.Transitions>
 
     <Page.Resources>
+        <CollectionViewSource x:Name="cvsGroups" Source="{x:Bind observablerecords}" IsSourceGrouped="True" ItemsPath="Items"/>
         <DataTemplate x:Key="MasterListViewItemTemplate" x:DataType="viewmodels:PasswordRecordViewModel">
             <Grid Margin="0,11,0,13">
                 <Grid.RowDefinitions>
@@ -44,21 +46,20 @@
             </Grid>
         </DataTemplate>
 
-        <DataTemplate x:Key="DetailContentTemplate" x:DataType="viewmodels:PasswordRecordViewModel">
-            <StackPanel>
-                <TextBlock
-                    Margin="0,8"
-                    Style="{ThemeResource TitleTextBlockStyle}"
-                    HorizontalAlignment="Left"
-                    Text="{x:Bind DisplayName}"/>
+        <DataTemplate x:Key="DetailContentTemplate">
+            <local:RecordDetailControl DataContext="{Binding}"/>
 
-                <TextBlock
-                    Margin="0,9"
-                    HorizontalAlignment="Left"
-                    MaxWidth="560"
-                    Style="{ThemeResource BodyTextBlockStyle}"
-                    Text="content" />
-            </StackPanel>
+
+        </DataTemplate>
+
+        <DataTemplate x:Key="ZoomedInGroupHeaderTemplate" x:DataType="viewmodels:PasswordRecordViewModelGroup">
+            <TextBlock Text="{x:Bind Label}" 
+               Foreground="{ThemeResource ApplicationForegroundThemeBrush}" 
+               Style="{StaticResource SubtitleTextBlockStyle}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ZoomedOutTemplate" x:DataType="wuxdata:ICollectionViewGroup">
+            <TextBlock Text="{x:Bind Group.(viewmodels:PasswordRecordViewModelGroup.Label)}" Style="{StaticResource SubtitleTextBlockStyle}" TextWrapping="Wrap"/>
         </DataTemplate>
     </Page.Resources>
 
@@ -100,26 +101,38 @@
             Margin="12,8,8,8"
             Style="{ThemeResource TitleTextBlockStyle}" />
 
-        <ListView
-            x:Name="MasterListView"
-            Grid.Row="1"
+        <SemanticZoom Grid.Row="1">
+            <SemanticZoom.ZoomedInView>
+                <ListView ItemsSource="{x:Bind cvsGroups.View}"
+            x:Name="MasterListView"         
             ItemContainerTransitions="{x:Null}"
             ItemTemplate="{StaticResource MasterListViewItemTemplate}"
             IsItemClickEnabled="True"
             ItemClick="MasterListView_ItemClick">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                </Style>
-            </ListView.ItemContainerStyle>
-        </ListView>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.GroupStyle>
+                        <GroupStyle HeaderTemplate="{StaticResource ZoomedInGroupHeaderTemplate}" />
+                    </ListView.GroupStyle>
+                </ListView>
+            </SemanticZoom.ZoomedInView>
+
+            <SemanticZoom.ZoomedOutView>
+                <ListView ItemsSource="{x:Bind cvsGroups.View.CollectionGroups}" HorizontalAlignment="Stretch"
+               SelectionMode="None" ItemTemplate="{StaticResource ZoomedOutTemplate}" />
+            </SemanticZoom.ZoomedOutView>
+        </SemanticZoom>
+
+
 
         <ContentPresenter
             x:Name="DetailContentPresenter"
             Grid.Column="1"
             Grid.RowSpan="2"
             BorderThickness="1,0,0,0"
-            Padding="24,0"
             BorderBrush="{ThemeResource SystemControlForegroundBaseLowBrush}"
             Content="{x:Bind MasterListView.SelectedItem, Mode=OneWay}"
             ContentTemplate="{StaticResource DetailContentTemplate}">

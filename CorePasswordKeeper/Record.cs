@@ -6,8 +6,9 @@ namespace CorePasswordKeeper
 {
     public class Record
     {
+        public string Id { get; set; }
         public string DisplayName { get; set; }
-        public IList<RecordEntry> RecordEntries { get; }
+        public IList<RecordEntry> RecordEntries { get; set; }
         public ISet<string> Tags { get; }
         public ISet<string> Folders { get; }
 

@@ -10,6 +10,9 @@ namespace CorePasswordKeeper
         public void LoadString(string json)
         {
             Records = JsonConvert.DeserializeObject<List<Record>>(json);
+            Records = new List<Record>() {
+                new Record() { DisplayName = "aaa",RecordEntries=new List<RecordEntry> {new RecordEntry("pwd","123",true) } }
+            , new Record() { DisplayName = "bbb", RecordEntries = new List<RecordEntry> { new RecordEntry("pwd", "123", true) } } };
         }
         public string SaveToJson()
         {
