@@ -31,20 +31,35 @@ namespace FlyPassword.UWP.Pages
         {
             this.InitializeComponent();
         }
+        bool disablecontrolevent = false;
         RangedObservableCollection<PasswordRecordEntryViewModel> passwordRecordEntryViewModels = new RangedObservableCollection<PasswordRecordEntryViewModel>();
         public PasswordRecordViewModel Record { get => (PasswordRecordViewModel)DataContext; }
         private void UserControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
-            if(sender!=null)
+            if (DataContext == null)
+                return;
+            if (sender != null)
             {
                 hideeditpanel();
             }
-            if (DataContext == null)
-                return;
-            var record = Record.ORecord ?? TmpData.PasswordKeeper.Records.Where(a => a.Id == Record.ItemId).First();
+            Record record = getrecord();
+            disablecontrolevent = true;
+            try
+            {
+                favappbtn.IsChecked = record.IsFav;
+            }
+            finally
+            {
+                disablecontrolevent = false;
+            }
             title.Text = record.DisplayName;
             passwordRecordEntryViewModels.Clear();
             passwordRecordEntryViewModels.AddRange(record.RecordEntries.Select(a => PasswordRecordEntryViewModel.CreateFromRecordEntry(a)));
+        }
+
+        private Record getrecord()
+        {
+            return Record.ORecord ?? TmpData.PasswordKeeper.Records.Where(a => a.Id == Record.ItemId).First();
         }
 
         private void MenuFlyoutItem_Click(object sender, RoutedEventArgs e)
@@ -146,6 +161,22 @@ namespace FlyPassword.UWP.Pages
             if (model == null)
                 return;
             model.Password = ss.Password;
+        }
+
+        private void AppBarToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (disablecontrolevent)
+                return;
+            getrecord().IsFav = true;
+            TmpData.SaveKeeperAsync().Forget();
+        }
+
+        private void AppBarToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            if (disablecontrolevent)
+                return;
+            getrecord().IsFav = false;
+            TmpData.SaveKeeperAsync().Forget();
         }
     }
 }

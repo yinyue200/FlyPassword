@@ -46,7 +46,7 @@ namespace FlyPassword.UWP.Pages
             }
             CharacterGroupings groupings = new CharacterGroupings();
             
-            observablerecords.AddRange(records.Select(a=> PasswordRecordViewModel.CreateFromRecord(a)).GroupBy((a) => groupings.Lookup(a.DisplayName))
+            observablerecords.AddRange(records.Select(a=> PasswordRecordViewModel.CreateFromRecord(a)).OrderBy(a=>a.DisplayName).GroupBy((a) => groupings.Lookup(a.DisplayName))
                 .Select(a=>new PasswordRecordViewModelGroup(a.Key,ct(a))));
 
             UpdateForVisualState(AdaptiveStates.CurrentState);

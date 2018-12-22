@@ -40,6 +40,7 @@
                 </ListView.ItemTemplate>
             </ListView>
             <CommandBar Grid.Row="1" VerticalAlignment="Bottom">
+                <AppBarToggleButton x:Name="favappbtn" Icon="Favorite" Checked="AppBarToggleButton_Checked" Unchecked="AppBarToggleButton_Unchecked"></AppBarToggleButton>
                 <AppBarButton Icon="Delete" Click="AppBarButton_Click_3"></AppBarButton>
                 <AppBarButton Icon="Edit" Click="AppBarButton_Click"></AppBarButton>
             </CommandBar>

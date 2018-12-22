@@ -33,6 +33,7 @@ namespace FlyPassword.UWP.Pages
             if (TmpData.PasswordKeeper != null)
             {
                 System.Diagnostics.Debug.WriteLine(viewall.Parent);
+                App_MainListRefresh(null, null);
             }
             else
             {
