@@ -46,19 +46,19 @@ namespace FlyPassword.UWP.Pages
                     }
                     else
                     {
-                        await new MessageDialog("Password can not be empty").ShowAsync();
+                        await new MessageDialog(TmpData.loader.GetString("Passwordcannotbeempty")).ShowAsync();
                     }
                 }
                 else
                 {
-                    await new MessageDialog("Please keep password=conformpassword").ShowAsync();
+                    await new MessageDialog(TmpData.loader.GetString("Pleasekeepasswordsamewithconformpassword")).ShowAsync();
                 }
             }
         }
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            await new MessageDialog("in development").ShowAsync();
+            await new MessageDialog(TmpData.loader.GetString("indevelopment")).ShowAsync();
         }
     }
 }

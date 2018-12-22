@@ -42,7 +42,7 @@ namespace FlyPassword.UWP.Pages
             }
             catch
             {
-                await new MessageDialog("密码错误").ShowAsync();
+                await new MessageDialog(TmpData.loader.GetString("passwordnotok")).ShowAsync();
             }
             finally
             {

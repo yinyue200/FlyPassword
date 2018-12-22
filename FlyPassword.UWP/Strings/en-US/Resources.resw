@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AppName" xml:space="preserve">
-    <value>FlyPassword</value>
+    <value>Fly Password</value>
   </data>
   <data name="entryname_disname" xml:space="preserve">
     <value>Name</value>
@@ -144,6 +144,9 @@
   <data name="entryname_url" xml:space="preserve">
     <value>Url</value>
   </data>
+  <data name="indevelopment" xml:space="preserve">
+    <value>in development</value>
+  </data>
   <data name="mainpage_allitems" xml:space="preserve">
     <value>All Items</value>
   </data>
@@ -155,6 +158,15 @@
   </data>
   <data name="mainpage_settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Passwordcannotbeempty" xml:space="preserve">
+    <value>Password can not be empty</value>
+  </data>
+  <data name="passwordnotok" xml:space="preserve">
+    <value>password error</value>
+  </data>
+  <data name="Pleasekeepasswordsamewithconformpassword" xml:space="preserve">
+    <value>Please keep password=conformpassword</value>
   </data>
   <data name="welcome_createnew" xml:space="preserve">
     <value>Create new profile</value>
