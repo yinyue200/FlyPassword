@@ -177,4 +177,25 @@
   <data name="welcome_useexist" xml:space="preserve">
     <value>Import exist password file</value>
   </data>
+  <data name="crp_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="crp_cpwd" xml:space="preserve">
+    <value>Conform Password</value>
+  </data>
+  <data name="crp_crp" xml:space="preserve">
+    <value>Create your profile</value>
+  </data>
+  <data name="crp_ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="crp_pwd" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="pwdinput_pleinput" xml:space="preserve">
+    <value>Please input your password</value>
+  </data>
+  <data name="pwdinput_unlock" xml:space="preserve">
+    <value>Unlock</value>
+  </data>
 </root>

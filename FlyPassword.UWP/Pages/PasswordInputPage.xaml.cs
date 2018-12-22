@@ -33,6 +33,8 @@ namespace FlyPassword.UWP.Pages
         
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
+            pwdbox.IsEnabled = false;
+            unlockbtn.IsEnabled = false;
             ProgressBarVisualHelper.SetYFHelperVisibilityForBool(ring, true);
             try
             {
@@ -47,6 +49,8 @@ namespace FlyPassword.UWP.Pages
             finally
             {
                 ProgressBarVisualHelper.SetYFHelperVisibilityForBool(ring, false);
+                unlockbtn.IsEnabled = true;
+                pwdbox.IsEnabled = true;
             }
         }
 

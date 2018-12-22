@@ -6,14 +6,15 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="创建新的密码本"
-    PrimaryButtonText="确认"
-    SecondaryButtonText="取消"
+    xmlns:xamlcore="using:FlyPassword.UWP.XamlCore"
+    Title="{xamlcore:Resw PropertyName=crp_crp}"
+    PrimaryButtonText="{xamlcore:Resw PropertyName=crp_ok}"
+    SecondaryButtonText="{xamlcore:Resw PropertyName=crp_cancel}"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
     <StackPanel>
-        <PasswordBox x:Name="pwd1" Header="密码"/>
-        <PasswordBox x:Name="pwd2" Header="确认密码"/>
+        <PasswordBox x:Name="pwd1" Header="{xamlcore:Resw PropertyName=crp_pwd}"/>
+        <PasswordBox x:Name="pwd2" Header="{xamlcore:Resw PropertyName=crp_cpwd}"/>
     </StackPanel>
 </ContentDialog>
