@@ -5,10 +5,16 @@
     xmlns:local="using:FlyPassword.UWP.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xamlcore="using:FlyPassword.UWP.XamlCore"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <StackPanel Padding="10">
+        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="{xamlcore:Resw PropertyName=welcome_greeting}"/>
+        <Button Content="{xamlcore:Resw PropertyName=welcome_useexist}" Click="Button_Click_1"></Button>
+        <Button Content="Import form cloud" Click="Button_Click_1"></Button>
 
-    </Grid>
+        <Button Content="{xamlcore:Resw PropertyName=welcome_createnew}" Click="Button_Click"></Button>
+
+    </StackPanel>
 </Page>

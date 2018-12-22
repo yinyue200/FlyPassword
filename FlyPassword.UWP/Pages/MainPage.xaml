@@ -7,6 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xamlcore="using:FlyPassword.UWP.XamlCore"
     mc:Ignorable="d"
+    Loaded="Page_Loaded"
+    Unloaded="Page_Unloaded"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <NavigationView x:Name="nvSample"  ItemInvoked="NvSample_ItemInvoked" Loaded="NvSample_Loaded">
@@ -16,7 +18,7 @@
             <NavigationViewItem x:Name="folder" Icon="Folder" Content="{xamlcore:Resw PropertyName=mainpage_folders}" Tag="SamplePage3" />
         </NavigationView.MenuItems>
         <NavigationView.PaneFooter>
-            <NavigationViewList SelectionMode="Extended">
+            <NavigationViewList x:Name="addnewentrybt" SelectionMode="Single" SelectionChanged="Addnewentrybt_SelectionChanged" >
                 <NavigationViewItem Icon="Add">
                     
                 </NavigationViewItem>

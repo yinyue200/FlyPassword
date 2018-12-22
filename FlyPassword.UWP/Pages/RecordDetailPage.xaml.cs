@@ -26,5 +26,10 @@ namespace FlyPassword.UWP.Pages
         {
             this.InitializeComponent();
         }
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            rdc.DataContext = e.Parameter;
+        }
     }
 }

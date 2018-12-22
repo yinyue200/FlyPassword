@@ -8,13 +8,14 @@ namespace CorePasswordKeeper
     {
         public string Id { get; set; }
         public string DisplayName { get; set; }
-        public IList<RecordEntry> RecordEntries { get; set; }
-        public ISet<string> Tags { get; }
-        public ISet<string> Folders { get; }
+        public IList<RecordEntry> RecordEntries { get; set; } = new List<RecordEntry>();
+        public ISet<string> Tags { get; } = new HashSet<string>();
+        public ISet<string> Folders { get; } = new HashSet<string>();
 
     }
     public enum RecordEntryType
     {
+        Unspecified,
         Text,
         Password,
         Email,

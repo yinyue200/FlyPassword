@@ -27,6 +27,7 @@ namespace FlyPassword.UWP.Core
                 {
                     EncryptAndDecrypt.Decrypt(stream, password, mem);
                     var passwordKeeper = new PasswordKeeper();
+                    mem.Seek(0, SeekOrigin.Begin);
                     passwordKeeper.LoadString(GetText(mem));
                     return passwordKeeper;
                 }

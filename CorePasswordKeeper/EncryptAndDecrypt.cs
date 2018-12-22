@@ -8,12 +8,12 @@ namespace CorePasswordKeeper
 {
     public static class EncryptAndDecrypt
     {
-        static readonly byte[] IV = new byte[16] { 0x23, 0x7a, 0x6a, 0xff, 0xea, 0xbd, 0x4f, 0xee, 0x63, 0x70, 0x45, 0xbe, 0xae, 0xfe, 0x85, 0x99 };
+        static readonly byte[] IV = new byte[16] { 0x20, 0x01, 0x09, 0x11, 0xff, 0x96, 0x0c, 0xe0, 0xf3, 0x75, 0x45, 0xee, 0xfe, 0x7e, 0xd5, 0x34 };
         public static void Encrypt(Stream data,string key,Stream output)
         {
             if (data.Length == 0)
                 return;
-            var bytekey = Encoding.UTF8.GetBytes(key);
+            var bytekey = HashStr(key);
             using (var aes = GetAes())
             {
                 aes.Key = bytekey;
@@ -25,6 +25,13 @@ namespace CorePasswordKeeper
                 }
             }
         }
+        static byte[] HashStr(string str)
+        {
+            using (var sha = SHA256.Create())
+            {
+                return sha.ComputeHash(Encoding.UTF8.GetBytes(str));
+            }
+        }
 
         private static Aes GetAes()
         {
@@ -33,6 +40,7 @@ namespace CorePasswordKeeper
             aes.KeySize = 256;
             aes.Mode = CipherMode.CBC;
             aes.Padding = PaddingMode.PKCS7;
+            aes.FeedbackSize = 128;
             return aes;
         }
 
@@ -40,7 +48,7 @@ namespace CorePasswordKeeper
         {
             if (data.Length == 0)
                 return;
-            var bytekey = Encoding.UTF8.GetBytes(key);
+            var bytekey = HashStr(key);
             using (var aes = GetAes())
             {
                 aes.Key = bytekey;

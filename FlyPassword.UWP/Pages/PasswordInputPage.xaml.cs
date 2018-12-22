@@ -36,8 +36,8 @@ namespace FlyPassword.UWP.Pages
             ProgressBarVisualHelper.SetYFHelperVisibilityForBool(ring, true);
             try
             {
-                var pwd = pwdbox.Password;
-                TmpData.PasswordKeeper = await Task.Run(async()=>  await TmpData.DataLoader.LoadFromFileAsync(await TmpData.GetPwdFileAsync(), pwd));
+                TmpData.Password = pwdbox.Password;
+                await TmpData.LoadKeeperAsync();
                 this.Frame.Navigate(typeof(MainPage));
             }
             catch

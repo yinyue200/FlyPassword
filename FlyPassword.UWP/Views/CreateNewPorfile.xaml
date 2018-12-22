@@ -1,0 +1,19 @@
+﻿<ContentDialog
+    x:Class="FlyPassword.UWP.Views.CreateNewPorfile"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlyPassword.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="创建新的密码本"
+    PrimaryButtonText="确认"
+    SecondaryButtonText="取消"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <StackPanel>
+        <PasswordBox x:Name="pwd1" Header="密码"/>
+        <PasswordBox x:Name="pwd2" Header="确认密码"/>
+    </StackPanel>
+</ContentDialog>

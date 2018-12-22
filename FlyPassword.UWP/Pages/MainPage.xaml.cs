@@ -39,6 +39,7 @@ namespace FlyPassword.UWP.Pages
                 this.Frame.Navigate(typeof(PasswordInputPage));
             }
         }
+        (Type, Func<object>) lastpar = (typeof(MasterPage), ()=>null);
         private void NvSample_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
         {
             if (args.IsSettingsInvoked)
@@ -47,24 +48,58 @@ namespace FlyPassword.UWP.Pages
             }
             else
             {
+                (Type, Func<object>) par = (null,()=> null);
                 if (args.InvokedItemContainer == viewall)
                 {
-                    contentFrame.Navigate(typeof(MasterPage),TmpData.PasswordKeeper.Records);
+                    par = (typeof(MasterPage), ()=>null);
                 }
                 else if (args.InvokedItemContainer == fav)
                 {
-                    contentFrame.Navigate(typeof(MasterPage), TmpData.PasswordKeeper.Records.Where(a=>a.Tags.Contains("_fav")).ToList());
+                    par = (typeof(MasterPage), ()=>TmpData.PasswordKeeper.Records.Where(a => a.Tags.Contains("_fav")).ToList());
                 }
                 else if (args.InvokedItemContainer == folder)
                 {
                     //todo
                 }
+
+
+                if (par.Item1 != null)
+                {
+                    contentFrame.Navigate(par.Item1, par.Item2());
+                    lastpar = par;
+                }
+                
             }
         }
 
         private void NvSample_Loaded(object sender, RoutedEventArgs e)
         {
             ((NavigationViewItem)nvSample.SettingsItem).Content = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView().GetString("mainpage_settings");
+        }
+
+
+        private void Addnewentrybt_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (addnewentrybt.SelectedIndex==0)
+            {
+                contentFrame.Navigate(typeof(NewRecordPage));
+            }
+            addnewentrybt.SelectedIndex = -1;
+
+        }
+        private void Page_Loaded(object sender, RoutedEventArgs e)
+        {
+            App.MainListRefresh += App_MainListRefresh;
+        }
+
+        private void App_MainListRefresh(object sender, EventArgs e)
+        {
+            contentFrame.Navigate(lastpar.Item1, lastpar.Item2());
+        }
+
+        private void Page_Unloaded(object sender, RoutedEventArgs e)
+        {
+            App.MainListRefresh -= App_MainListRefresh;
         }
     }
 }

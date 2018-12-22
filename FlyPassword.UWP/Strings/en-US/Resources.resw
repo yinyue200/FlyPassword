@@ -120,6 +120,30 @@
   <data name="AppName" xml:space="preserve">
     <value>FlyPassword</value>
   </data>
+  <data name="entryname_disname" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="entryname_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="entryname_loginname" xml:space="preserve">
+    <value>User Name</value>
+  </data>
+  <data name="entryname_phonenum" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="entryname_pwd" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="entryname_qaa" xml:space="preserve">
+    <value>Password protected answer</value>
+  </data>
+  <data name="entryname_qaq" xml:space="preserve">
+    <value>Password protected question</value>
+  </data>
+  <data name="entryname_url" xml:space="preserve">
+    <value>Url</value>
+  </data>
   <data name="mainpage_allitems" xml:space="preserve">
     <value>All Items</value>
   </data>
@@ -131,5 +155,14 @@
   </data>
   <data name="mainpage_settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="welcome_createnew" xml:space="preserve">
+    <value>Create new profile</value>
+  </data>
+  <data name="welcome_greeting" xml:space="preserve">
+    <value>Welcome to use Fly Password</value>
+  </data>
+  <data name="welcome_useexist" xml:space="preserve">
+    <value>Import exist password file</value>
   </data>
 </root>
