@@ -121,105 +121,105 @@
     <value>FlyPassword</value>
   </data>
   <data name="entryname_disname" xml:space="preserve">
-    <value>Name</value>
+    <value>名称</value>
   </data>
   <data name="entryname_email" xml:space="preserve">
-    <value>Email</value>
+    <value>邮件地址</value>
   </data>
   <data name="entryname_loginname" xml:space="preserve">
-    <value>User Name</value>
+    <value>用户名</value>
   </data>
   <data name="entryname_phonenum" xml:space="preserve">
-    <value>Phone</value>
+    <value>电话</value>
   </data>
   <data name="entryname_pwd" xml:space="preserve">
-    <value>Password</value>
+    <value>密码</value>
   </data>
   <data name="entryname_qaa" xml:space="preserve">
-    <value>Password protected answer</value>
+    <value>密保答案</value>
   </data>
   <data name="entryname_qaq" xml:space="preserve">
-    <value>Password protected question</value>
+    <value>密保问题</value>
   </data>
   <data name="entryname_url" xml:space="preserve">
-    <value>Url</value>
+    <value>网址</value>
   </data>
   <data name="indevelopment" xml:space="preserve">
-    <value>In development</value>
+    <value>该功能仍在开发中</value>
   </data>
   <data name="mainpage_allitems" xml:space="preserve">
-    <value>All Items</value>
+    <value>所有项目</value>
   </data>
   <data name="mainpage_favitems" xml:space="preserve">
-    <value>Favourites</value>
+    <value>收藏的</value>
   </data>
   <data name="mainpage_folders" xml:space="preserve">
-    <value>Folders</value>
+    <value>文件夹</value>
   </data>
   <data name="mainpage_settings" xml:space="preserve">
-    <value>Settings</value>
+    <value>设置</value>
   </data>
   <data name="Passwordcannotbeempty" xml:space="preserve">
-    <value>Password can not be empty</value>
+    <value>密码不能为空</value>
   </data>
   <data name="passwordnotok" xml:space="preserve">
-    <value>password error</value>
+    <value>密码错误</value>
   </data>
   <data name="Pleasekeepasswordsamewithconformpassword" xml:space="preserve">
-    <value>Please keep password=conformpassword</value>
+    <value>请确保密码和确认密码相同</value>
   </data>
   <data name="welcome_createnew" xml:space="preserve">
-    <value>Create new profile</value>
+    <value>创建新的密码本</value>
   </data>
   <data name="welcome_greeting" xml:space="preserve">
-    <value>Welcome to use Fly Password</value>
+    <value>欢迎使用 FlyPassword</value>
   </data>
   <data name="welcome_useexist" xml:space="preserve">
-    <value>Import exist password file</value>
+    <value>导入现有的密码本</value>
   </data>
   <data name="crp_cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="crp_cpwd" xml:space="preserve">
-    <value>Conform Password</value>
+    <value>确认密码</value>
   </data>
   <data name="crp_crp" xml:space="preserve">
-    <value>Create your profile</value>
+    <value>创建空白的密码本</value>
   </data>
   <data name="crp_ok" xml:space="preserve">
-    <value>OK</value>
+    <value>确定</value>
   </data>
   <data name="crp_pwd" xml:space="preserve">
-    <value>Password</value>
+    <value>密码</value>
   </data>
   <data name="pwdinput_pleinput" xml:space="preserve">
-    <value>Please input your password</value>
+    <value>请输入密码</value>
   </data>
   <data name="pwdinput_unlock" xml:space="preserve">
-    <value>Unlock</value>
+    <value>解锁</value>
   </data>
   <data name="copy" xml:space="preserve">
-    <value>Copy</value>
+    <value>复制</value>
   </data>
   <data name="eld_iss" xml:space="preserve">
-    <value>Is Secret</value>
+    <value>敏感</value>
   </data>
   <data name="eld_name" xml:space="preserve">
-    <value>Name</value>
+    <value>名称</value>
   </data>
   <data name="eld_title" xml:space="preserve">
-    <value>Edit Entry</value>
+    <value>编辑项</value>
   </data>
   <data name="eld_type" xml:space="preserve">
-    <value>Type</value>
+    <value>类型</value>
   </data>
   <data name="delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>删除</value>
   </data>
   <data name="namecannotbeempty" xml:space="preserve">
-    <value>Name can not be empty</value>
+    <value>名称不能为空</value>
   </data>
   <data name="addentry" xml:space="preserve">
-    <value>Add new entry</value>
+    <value>添加新项</value>
   </data>
 </root>
