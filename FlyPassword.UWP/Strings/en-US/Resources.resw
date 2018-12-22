@@ -145,7 +145,7 @@
     <value>Url</value>
   </data>
   <data name="indevelopment" xml:space="preserve">
-    <value>in development</value>
+    <value>In development</value>
   </data>
   <data name="mainpage_allitems" xml:space="preserve">
     <value>All Items</value>
@@ -197,5 +197,26 @@
   </data>
   <data name="pwdinput_unlock" xml:space="preserve">
     <value>Unlock</value>
+  </data>
+  <data name="copy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="eld_iss" xml:space="preserve">
+    <value>Is Secret</value>
+  </data>
+  <data name="eld_name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="eld_title" xml:space="preserve">
+    <value>Edit Entry</value>
+  </data>
+  <data name="eld_type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="namecannotbeempty" xml:space="preserve">
+    <value>Name can not be empty</value>
   </data>
 </root>

@@ -23,7 +23,7 @@ namespace CorePasswordKeeper
     public enum RecordEntryType
     {
         Unspecified,
-        Text,
+        ShortText,
         Password,
         Email,
         PhoneNumber,
@@ -31,6 +31,7 @@ namespace CorePasswordKeeper
         Pin,
         Date,
         UserName,
+        LongText
     }
     public class RecordEntry
     {

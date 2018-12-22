@@ -1,24 +1,16 @@
-﻿using System;
+﻿using CorePasswordKeeper;
+using FlyPassword.UWP.Core;
+using FlyPassword.UWP.ViewModels;
+using FlyPassword.UWP.Views;
+using Microsoft.VisualStudio.Threading;
+using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.ApplicationModel.DataTransfer;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-using CorePasswordKeeper;
-using FlyPassword.UWP.ViewModels;
-using FlyPassword.UWP.Core;
-using Windows.ApplicationModel.DataTransfer;
-using System.Collections.ObjectModel;
-using Microsoft.VisualStudio.Threading;
-using System.Threading.Tasks;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -53,6 +45,7 @@ namespace FlyPassword.UWP.Pages
                 disablecontrolevent = false;
             }
             title.Text = record.DisplayName;
+            namebox.Text = record.DisplayName;
             passwordRecordEntryViewModels.Clear();
             passwordRecordEntryViewModels.AddRange(record.RecordEntries.Select(a => PasswordRecordEntryViewModel.CreateFromRecordEntry(a)));
         }
@@ -91,6 +84,11 @@ namespace FlyPassword.UWP.Pages
         private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
             //save the data
+            if (string.IsNullOrEmpty(namebox.Text))
+            {
+                _ = new MessageDialog(TmpData.loader.GetString("namecannotbeempty")).ShowAsync();
+                return;
+            }
             var record = TmpData.PasswordKeeper.Records.Where(a => a.Id == Record.ItemId).FirstOrDefault();
             if(record==null)
             {
@@ -177,6 +175,40 @@ namespace FlyPassword.UWP.Pages
                 return;
             getrecord().IsFav = false;
             TmpData.SaveKeeperAsync().Forget();
+        }
+
+        private async void HyperlinkButton_Click(object sender, RoutedEventArgs e)
+        {
+            var model = (PasswordRecordEntryViewModel)((FrameworkElement)sender).DataContext;
+            if (model == null)
+                return;
+            var rd = new RecordEntry(model.DisplayName, model.Password, model.PasswordBoxVisibility == Visibility.Visible ? true : false);
+            await NewMethod(model, rd,true);
+        }
+
+        private async System.Threading.Tasks.Task NewMethod(PasswordRecordEntryViewModel model, RecordEntry rd,bool sd)
+        {
+            var editLabelDialog = new EditLabelDialog(rd,sd);
+            editLabelDialog.Deleted += (s, args) =>
+            {
+                passwordRecordEntryViewModels.Remove(model);
+            };
+            var result = await editLabelDialog.ShowAsync();
+            if (result == ContentDialogResult.Primary)
+            {
+                var index = passwordRecordEntryViewModels.IndexOf(model);
+                if (index < 0)
+                    index = passwordRecordEntryViewModels.Count;
+                else
+                    passwordRecordEntryViewModels.RemoveAt(index);
+                passwordRecordEntryViewModels.Insert(index, PasswordRecordEntryViewModel.CreateFromRecordEntry(rd));
+            }
+        }
+
+        private async void AppBarButton_Click_4(object sender, RoutedEventArgs e)
+        {
+            var rd = new RecordEntry(string.Empty, string.Empty, false);
+            await NewMethod(null, rd,false);
         }
     }
 }

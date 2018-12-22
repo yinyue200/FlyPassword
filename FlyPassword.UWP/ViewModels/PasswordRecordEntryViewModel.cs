@@ -8,7 +8,7 @@ using Windows.UI.Xaml;
 
 namespace FlyPassword.UWP.ViewModels
 {
-    class PasswordRecordEntryViewModel:DependencyObject
+    public class PasswordRecordEntryViewModel:DependencyObject
     {
         public bool IsPwdShowed { get; set; }
         public const string hidepwd = "●●●●●●";

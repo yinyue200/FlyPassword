@@ -1,0 +1,22 @@
+﻿<ContentDialog
+    x:Class="FlyPassword.UWP.Views.EditLabelDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FlyPassword.UWP.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xamlcore="using:FlyPassword.UWP.XamlCore"
+    mc:Ignorable="d"
+    Title="{xamlcore:Resw PropertyName=eld_title}"
+    PrimaryButtonText="{xamlcore:Resw PropertyName=crp_ok}"
+    SecondaryButtonText="{xamlcore:Resw PropertyName=crp_cancel}"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick" Loaded="ContentDialog_Loaded">
+
+    <StackPanel>
+        <TextBox x:Name="namebox" Header="{xamlcore:Resw PropertyName=eld_name}"></TextBox>
+        <!--<ComboBox  x:Name="typebox" Header="{xamlcore:Resw PropertyName=eld_type}"></ComboBox>-->
+        <CheckBox x:Name="issbox" Content="{xamlcore:Resw PropertyName=eld_iss}"></CheckBox>
+        <Button x:Name="delbtn" Visibility="{x:Bind showdel}" Content="{xamlcore:Resw PropertyName=delete}" Click="Button_Click"></Button>
+    </StackPanel>
+</ContentDialog>

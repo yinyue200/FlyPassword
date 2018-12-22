@@ -10,6 +10,7 @@ namespace FlyPassword.UWP.XamlCore
 {
     [Bindable]
     [MarkupExtensionReturnType(ReturnType = typeof(string))]
+    //[ContentProperty(Name = nameof(PropertyName))]
     class ReswExtension: MarkupExtension
     {
         public string PropertyName { get; set; }
