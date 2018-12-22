@@ -24,7 +24,7 @@ namespace FlyPassword.UWP.Pages
             this.InitializeComponent();
         }
         bool disablecontrolevent = false;
-        ObservableCollection<PasswordRecordEntryViewModel> passwordRecordEntryViewModels = new ObservableCollection<PasswordRecordEntryViewModel>();
+        RangedObservableCollection<PasswordRecordEntryViewModel> passwordRecordEntryViewModels = new RangedObservableCollection<PasswordRecordEntryViewModel>();
         public PasswordRecordViewModel Record { get => (PasswordRecordViewModel)DataContext; }
         private void UserControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
         {
