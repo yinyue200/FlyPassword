@@ -32,7 +32,7 @@ namespace FlyPassword.UWP.Views
 
         // Using a DependencyProperty as the backing store for Password.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty PasswordProperty =
-            DependencyProperty.Register("Password", typeof(string), typeof(PasswordInputBox), new PropertyMetadata(null, PropertyChangedCallback));
+            DependencyProperty.Register("Password", typeof(string), typeof(PasswordInputBox), new PropertyMetadata(string.Empty, PropertyChangedCallback));
 
 
         public PasswordInputBox()

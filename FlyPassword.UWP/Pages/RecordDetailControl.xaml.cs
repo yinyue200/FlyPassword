@@ -102,10 +102,10 @@ namespace FlyPassword.UWP.Pages
                 System.Diagnostics.Debug.WriteLine(one.DisplayName + " " + one.Password + "added"+one.DisplayValue);
             }
             record.RecordEntries = ls;
-
             TmpData.SaveKeeperAsync().Forget();
             UserControl_DataContextChanged(null, null);
             hideeditpanel();
+            App.CallMainListRefresh(this,EventArgs.Empty);
         }
 
         private void AppBarButton_Click_2(object sender, RoutedEventArgs e)
