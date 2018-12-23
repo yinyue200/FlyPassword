@@ -10,7 +10,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <StackPanel Padding="10">
-        <TextBlock TextWrapping="WrapWholeWords">
+        <TextBlock TextWrapping="Wrap">
+                    <Bold>Fly Password</Bold><LineBreak/>
+            Project Page : <Hyperlink NavigateUri="https://github.com/yinyue200/FlyPassword">https://github.com/yinyue200/FlyPassword</Hyperlink><LineBreak/>
+            <LineBreak/>
             Copyright (C) 2018 yinyue200.com<LineBreak/>
 
     This program is free software: you can redistribute it and/or modify
@@ -20,12 +23,10 @@
 
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.<LineBreak/>
-
-    You should have received a copy of the GNU General Public License
-along with this program. If not, see <Hyperlink NavigateUri="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</Hyperlink><LineBreak/>
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the <Hyperlink NavigateUri="https://github.com/yinyue200/FlyPassword/blob/master/LICENSE">GNU General Public License</Hyperlink>
+     for more details.<LineBreak/>
         </TextBlock>
+
         <Image  Source="/Assets/gplv3-127x51.png" Stretch="None"/>
         <Button x:Name="savebtn" Content="{xamlcore:Resw PropertyName=about_exportfile}" Click="Button_Click"></Button>
     </StackPanel>
