@@ -32,20 +32,22 @@ namespace FlyPassword.UWP.Pages
 
         private void Rdc_Loaded(object sender, RoutedEventArgs e)
         {
-            rdc.DataContext = PasswordRecordViewModel.CreateFromRecord(AddDefaultEntry(new Record() { Id=Guid.NewGuid().ToString(),DisplayName=string.Empty}));
+            rdc.DataContext = PasswordRecordViewModel.CreateFromRecord(AddDefaultEntry(new Record() { Id = Guid.NewGuid().ToString(), DisplayName = string.Empty }));
             rdc.Frame = Frame;
             rdc.showeditpanel();
         }
         Record AddDefaultEntry(Record record)
-        {          
-            var ls = new List<RecordEntry>();
-            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_loginname"), string.Empty, false));
-            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_email"), string.Empty, false));
-            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_pwd"), string.Empty, true));
-            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_phonenum"), string.Empty, false));
-            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_url"), string.Empty, false));
-            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_qaq"), string.Empty, false));
-            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_qaa"), string.Empty, false));
+        {
+            var ls = new List<RecordEntry>
+            {
+                new RecordEntry(TmpData.loader.GetString("entryname_loginname"), string.Empty, false),
+                new RecordEntry(TmpData.loader.GetString("entryname_email"), string.Empty, false),
+                new RecordEntry(TmpData.loader.GetString("entryname_pwd"), string.Empty, true),
+                new RecordEntry(TmpData.loader.GetString("entryname_phonenum"), string.Empty, false),
+                new RecordEntry(TmpData.loader.GetString("entryname_url"), string.Empty, false),
+                new RecordEntry(TmpData.loader.GetString("entryname_qaq"), string.Empty, false),
+                new RecordEntry(TmpData.loader.GetString("entryname_qaa"), string.Empty, false)
+            };
             record.RecordEntries = ls;
             return record;
         }
