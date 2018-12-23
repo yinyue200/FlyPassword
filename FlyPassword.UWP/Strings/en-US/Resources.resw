@@ -240,4 +240,13 @@
   <data name="accept" xml:space="preserve">
     <value>Accept</value>
   </data>
+  <data name="pwdg_kefayin" xml:space="preserve">
+    <value>Pronouncable</value>
+  </data>
+  <data name="pwdg_length" xml:space="preserve">
+    <value>Length</value>
+  </data>
+  <data name="pwdg_symbol" xml:space="preserve">
+    <value>Symbol</value>
+  </data>
 </root>

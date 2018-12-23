@@ -240,4 +240,13 @@
   <data name="accept" xml:space="preserve">
     <value>保存</value>
   </data>
+  <data name="pwdg_length" xml:space="preserve">
+    <value>长度</value>
+  </data>
+  <data name="pwdg_kefayin" xml:space="preserve">
+    <value>可发音</value>
+  </data>
+  <data name="pwdg_symbol" xml:space="preserve">
+    <value>符号</value>
+  </data>
 </root>
