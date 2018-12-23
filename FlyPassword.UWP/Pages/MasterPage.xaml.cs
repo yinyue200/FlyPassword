@@ -33,7 +33,7 @@ namespace FlyPassword.UWP.Pages
             this.InitializeComponent();
         }
         private PasswordRecordViewModel _lastSelectedItem;
-        Func<IEnumerable<object>> recordsAction;
+        Func<object> recordsAction;
         IEnumerable<Record> records;
 
 
@@ -51,7 +51,7 @@ namespace FlyPassword.UWP.Pages
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            records = (recordsAction = (e.Parameter as Func<IEnumerable<object>>) ?? (() => null))() as IEnumerable<Record>;
+            records = (recordsAction = (e.Parameter as Func<object>) ?? (() => null))() as IEnumerable<Record>;
             Load();
         }
 

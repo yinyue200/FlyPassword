@@ -14,9 +14,9 @@
 
     <NavigationView x:Name="nvSample" Windows10version1803:IsBackButtonVisible="Collapsed" ItemInvoked="NvSample_ItemInvoked" Loaded="NvSample_Loaded">
         <NavigationView.MenuItems>
-            <NavigationViewItem x:Name="viewall" Icon="ViewAll" Content="{xamlcore:Resw PropertyName=mainpage_allitems}" Tag="SamplePage1" />
-            <NavigationViewItem x:Name="fav" Icon="Favorite" Content="{xamlcore:Resw PropertyName=mainpage_favitems}" Tag="SamplePage2" />
-            <NavigationViewItem x:Name="folder" Icon="Folder" Content="{xamlcore:Resw PropertyName=mainpage_folders}" Tag="SamplePage3" />
+            <NavigationViewItem x:Name="viewall" Icon="ViewAll" Content="{xamlcore:Resw PropertyName=mainpage_allitems}"/>
+            <NavigationViewItem x:Name="fav" Icon="Favorite" Content="{xamlcore:Resw PropertyName=mainpage_favitems}"/>
+            <NavigationViewItem x:Name="folder" Icon="Folder" Content="{xamlcore:Resw PropertyName=mainpage_folders}"/>
         </NavigationView.MenuItems>
         <NavigationView.PaneFooter>
             <NavigationViewList x:Name="addnewentrybt" SelectionMode="Single" SelectionChanged="Addnewentrybt_SelectionChanged" >

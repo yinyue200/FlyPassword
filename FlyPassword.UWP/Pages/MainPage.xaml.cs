@@ -105,7 +105,11 @@ namespace FlyPassword.UWP.Pages
 
         private void App_MainListRefresh(object sender, EventArgs e)
         {
-            if(contentFrame.Content is IRefreshable refreshable)
+            if (contentFrame.Content == null)
+            {
+                contentFrame.Navigate(lastpar.Item1, lastpar.Item2);
+            }
+            else if (contentFrame.Content is IRefreshable refreshable)
             {
                 refreshable.Refresh();
             }
