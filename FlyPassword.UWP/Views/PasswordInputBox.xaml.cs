@@ -82,10 +82,14 @@ namespace FlyPassword.UWP.Views
                     break;
             }
         }
+        bool isnotfirsttrue = false;
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+            isnotfirsttrue = pwdck.IsChecked==true;
+            pwdck.IsChecked = true;
+            AppBarButton_Click(null, null);
         }
         int length = 10;
 
@@ -109,9 +113,11 @@ namespace FlyPassword.UWP.Views
             AppBarButton_Click(null, null);
         }
         CorePasswordKeeper.Generator.IPasswordGenerator generator;
+        
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
-            if(ts1==null)
+            const string  sp= "0123456789!@#$%^&*?_~-,()";
+            if (ts1==null||ts2==null)
             {
                 return;
             }
@@ -124,7 +130,7 @@ namespace FlyPassword.UWP.Views
                 var rm = new Random();
                 Password = new string((generator=new CorePasswordKeeper.Generator.PronouncablePasswordGenerator
                     (length, new CorePasswordKeeper.Generator.PronouncableWordLength(3, 8)))
-                    .Generate().Select(a => a == ' ' ? (rm.Next(-1, 1) == 0 ? '_' : rm.Next(-1, 9)).ToString(System.Globalization.NumberFormatInfo.InvariantInfo)[0] : a).ToArray());
+                    .Generate().Select(a => a == ' ' ? sp[rm.Next(0, ts2.IsOn==false?10:sp.Length-1)] : a).ToArray());
             }
             else
             {
@@ -150,6 +156,11 @@ namespace FlyPassword.UWP.Views
                 Clipboard.SetContentWithOptions(dataPackage, new ClipboardContentOptions() { IsAllowedInHistory = false, IsRoamable = false });
             else
                 Clipboard.SetContent(dataPackage);
+        }
+
+        private void Flyout_Closed(object sender, object e)
+        {
+            pwdck.IsChecked = isnotfirsttrue;
         }
     }
 }
