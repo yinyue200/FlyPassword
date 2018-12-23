@@ -13,6 +13,8 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using CorePasswordKeeper;
+using Windows.ApplicationModel.DataTransfer;
+using FlyPassword.UWP.Core;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -142,7 +144,12 @@ namespace FlyPassword.UWP.Views
 
         private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
-
+            var dataPackage = new DataPackage();
+            dataPackage.SetText(Password);
+            if (ApiInfo.IsUniversalApiContractV7Available)
+                Clipboard.SetContentWithOptions(dataPackage, new ClipboardContentOptions() { IsAllowedInHistory = false, IsRoamable = false });
+            else
+                Clipboard.SetContent(dataPackage);
         }
     }
 }
