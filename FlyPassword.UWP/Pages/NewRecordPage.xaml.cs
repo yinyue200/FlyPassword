@@ -40,8 +40,8 @@ namespace FlyPassword.UWP.Pages
         {          
             var ls = new List<RecordEntry>();
             ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_loginname"), string.Empty, false));
-            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_pwd"), string.Empty, true));
             ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_email"), string.Empty, false));
+            ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_pwd"), string.Empty, true));
             ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_phonenum"), string.Empty, false));
             ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_url"), string.Empty, false));
             ls.Add(new RecordEntry(TmpData.loader.GetString("entryname_qaq"), string.Empty, false));

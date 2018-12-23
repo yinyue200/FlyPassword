@@ -9,12 +9,15 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <StackPanel Padding="10">
-        <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="{xamlcore:Resw PropertyName=welcome_greeting}"/>
-        <Button Content="{xamlcore:Resw PropertyName=welcome_useexist}" Click="Button_Click_2"></Button>
-        <Button Content="Import from cloud" Click="Button_Click_1"></Button>
+    <Grid Padding="10">
+        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource HeaderTextBlockStyle}" Text="{xamlcore:Resw PropertyName=welcome_greeting}"/>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <Button Margin="5" Content="{xamlcore:Resw PropertyName=welcome_useexist}" Click="Button_Click_2"></Button>
+            <Button Margin="5" Content="Import from cloud" Click="Button_Click_1"></Button>
 
-        <Button Content="{xamlcore:Resw PropertyName=welcome_createnew}" Click="Button_Click"></Button>
+            <Button Margin="5" Content="{xamlcore:Resw PropertyName=welcome_createnew}" Click="Button_Click"></Button>
+        </StackPanel>
 
-    </StackPanel>
+
+    </Grid>
 </Page>
