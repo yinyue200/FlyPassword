@@ -68,7 +68,7 @@ namespace FlyPassword.UWP.Pages
 
                 if (par.Item1 != null)
                 {
-                    contentFrame.Navigate(par.Item1, par.Item2());
+                    contentFrame.Navigate(par.Item1, par.Item2);
                     lastpar = par;
                 }
                 
@@ -105,7 +105,10 @@ namespace FlyPassword.UWP.Pages
 
         private void App_MainListRefresh(object sender, EventArgs e)
         {
-            contentFrame.Navigate(lastpar.Item1, lastpar.Item2());
+            if(contentFrame.Content is IRefreshable refreshable)
+            {
+                refreshable.Refresh();
+            }
         }
 
         private void Page_Unloaded(object sender, RoutedEventArgs e)

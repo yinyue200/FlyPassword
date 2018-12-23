@@ -33,6 +33,7 @@ namespace FlyPassword.UWP.Pages
         private void Rdc_Loaded(object sender, RoutedEventArgs e)
         {
             rdc.DataContext = PasswordRecordViewModel.CreateFromRecord(AddDefaultEntry(new Record() { Id=Guid.NewGuid().ToString(),DisplayName=string.Empty}));
+            rdc.Frame = Frame;
             rdc.showeditpanel();
         }
         Record AddDefaultEntry(Record record)

@@ -35,17 +35,18 @@ namespace FlyPassword.UWP.Core
         }
         public async Task SaveToFileAsync(IStorageFile storageFile, string password,PasswordKeeper passwordKeeper)
         {
-            using (var stream = await storageFile.OpenStreamForWriteAsync())
+            using (var stream = await storageFile.OpenTransactedWriteAsync())
             {
                 using (var mem = new MemoryStream(Encoding.UTF8.GetBytes(passwordKeeper.SaveToJson())))
                 {
-                    EncryptAndDecrypt.Encrypt(mem, password, stream);
+                    EncryptAndDecrypt.Encrypt(mem, password, stream.Stream.AsStreamForWrite());
                 }
+                await stream.CommitAsync();
             }
         }
         static string GetText(Stream stream)
         {
-            using(var textreader=new StreamReader(stream))
+            using(var textreader=new StreamReader(stream,Encoding.UTF8))
             {
                 return textreader.ReadToEnd();
             }

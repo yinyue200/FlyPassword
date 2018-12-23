@@ -13,7 +13,10 @@ namespace CorePasswordKeeper
         }
         public string SaveToJson()
         {
-            var json= JsonConvert.SerializeObject(Records);
+            var json = JsonConvert.SerializeObject(Records);
+#if DEBUG
+            _ = JsonConvert.DeserializeObject<List<Record>>(json);
+#endif
             System.Diagnostics.Debug.WriteLine(json);
             return json;
         }

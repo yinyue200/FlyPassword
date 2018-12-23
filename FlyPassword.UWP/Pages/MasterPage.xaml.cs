@@ -26,28 +26,55 @@ namespace FlyPassword.UWP.Pages
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MasterPage : Page
+    public sealed partial class MasterPage : Page,IRefreshable
     {
         public MasterPage()
         {
             this.InitializeComponent();
         }
         private PasswordRecordViewModel _lastSelectedItem;
+        Func<IEnumerable<object>> recordsAction;
         IEnumerable<Record> records;
-        RangedObservableCollection<PasswordRecordViewModelGroup> observablerecords = new RangedObservableCollection<PasswordRecordViewModelGroup>();
+
+
+        public RangedObservableCollection<PasswordRecordViewModelGroup> observablerecords
+        {
+            get { return (RangedObservableCollection<PasswordRecordViewModelGroup>)GetValue(observablerecordsProperty); }
+            set { SetValue(observablerecordsProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyProperty.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty observablerecordsProperty =
+            DependencyProperty.Register("observablerecords", typeof(RangedObservableCollection<PasswordRecordViewModelGroup>), typeof(MasterPage), new PropertyMetadata(null));
+
         
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            records = e.Parameter as IEnumerable<Record>;
+            records = (recordsAction = (e.Parameter as Func<IEnumerable<object>>) ?? (() => null))() as IEnumerable<Record>;
+            Load();
+        }
+
+        public void Refresh()
+        {
+            records = recordsAction() as IEnumerable<Record>;
+            Load();
+            //if(_lastSelectedItem!=null&& !string.IsNullOrWhiteSpace(_lastSelectedItem.ItemId))
+            //{
+                
+            //}
+        }
+        private void Load()
+        {
             if (records == null)
             {
                 records = TmpData.PasswordKeeper.Records;
             }
             CharacterGroupings groupings = new CharacterGroupings();
-            
-            observablerecords.AddRange(records.Select(a=> PasswordRecordViewModel.CreateFromRecord(a)).OrderBy(a=>a.DisplayName).GroupBy((a) => groupings.Lookup(a.DisplayName))
-                .Select(a=>new PasswordRecordViewModelGroup(a.Key,ct(a))));
+
+            observablerecords = new RangedObservableCollection<PasswordRecordViewModelGroup>(records.Select(a => PasswordRecordViewModel.CreateFromRecord(a))
+                .OrderBy(a => a.DisplayName).GroupBy((a) => groupings.Lookup(a.DisplayName))
+                .Select(a => new PasswordRecordViewModelGroup(a.Key, ct(a))));
 
             UpdateForVisualState(AdaptiveStates.CurrentState);
 
@@ -55,6 +82,7 @@ namespace FlyPassword.UWP.Pages
             // Sometimes, this content will be animated as part of the page transition.
             DisableContentTransitions();
         }
+
         RangedObservableCollection<T> ct<T>(IEnumerable<T> ts)
         {
             var a = new RangedObservableCollection<T>();
@@ -120,7 +148,6 @@ namespace FlyPassword.UWP.Pages
                 DetailContentPresenter.ContentTransitions.Clear();
             }
         }
-
 
     }
 }

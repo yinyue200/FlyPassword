@@ -112,6 +112,10 @@ namespace FlyPassword.UWP.Pages
         {
             UserControl_DataContextChanged(null, null);
             hideeditpanel();
+            if (!TmpData.PasswordKeeper.Records.Any(a=> a.Id == Record.ItemId))
+            {
+                Back();
+            }
         }
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
@@ -137,6 +141,11 @@ namespace FlyPassword.UWP.Pages
             TmpData.PasswordKeeper.Records.Remove(Record.ORecord ?? TmpData.PasswordKeeper.Records.Where(a => a.Id == Record.ItemId).First());
             TmpData.SaveKeeperAsync().Forget();
             App.CallMainListRefresh(this, EventArgs.Empty);
+            Back();
+        }
+
+        private void Back()
+        {
             if (Frame != null)
                 Frame.GoBack();
             editpanel.Visibility = Visibility.Collapsed;
