@@ -222,4 +222,22 @@
   <data name="addentry" xml:space="preserve">
     <value>添加新项</value>
   </data>
+  <data name="about_exportfile" xml:space="preserve">
+    <value>导出数据</value>
+  </data>
+  <data name="add" xml:space="preserve">
+    <value>添加</value>
+  </data>
+  <data name="del" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>编辑</value>
+  </data>
+  <data name="fav" xml:space="preserve">
+    <value>收藏</value>
+  </data>
+  <data name="accept" xml:space="preserve">
+    <value>保存</value>
+  </data>
 </root>

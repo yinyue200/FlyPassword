@@ -5,10 +5,11 @@
     xmlns:local="using:FlyPassword.UWP.Pages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:xamlcore="using:FlyPassword.UWP.XamlCore"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <StackPanel Padding="10">
         <TextBlock TextWrapping="WrapWholeWords">
             Copyright (C) 2018 yinyue200.com<LineBreak/>
 
@@ -23,7 +24,9 @@
     GNU General Public License for more details.<LineBreak/>
 
     You should have received a copy of the GNU General Public License
-along with this program. If not, see http://www.gnu.org/licenses/<LineBreak/>
+along with this program. If not, see <Hyperlink NavigateUri="http://www.gnu.org/licenses/">http://www.gnu.org/licenses/</Hyperlink><LineBreak/>
         </TextBlock>
-    </Grid>
+        <Image  Source="/Assets/gplv3-127x51.png" Stretch="None"/>
+        <Button x:Name="savebtn" Content="{xamlcore:Resw PropertyName=about_exportfile}" Click="Button_Click"></Button>
+    </StackPanel>
 </Page>

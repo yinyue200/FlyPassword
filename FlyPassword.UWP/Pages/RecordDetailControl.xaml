@@ -18,10 +18,15 @@
             </Grid.RowDefinitions>
             <TextBlock x:Name="title" Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Stretch" Margin="10,0,0,0"  VerticalAlignment="Stretch"></TextBlock>
             <ListView ItemsSource="{x:Bind passwordRecordEntryViewModels}" x:Name="entryls" Grid.Row="1" SelectionMode="None" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="0,0,0,45">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.Resources>
                 <ListView.ItemTemplate>
                     <DataTemplate x:DataType="viewmodels:PasswordRecordEntryViewModel">
                         <StackPanel>
-                            <TextBlock Text="{x:Bind DisplayName}" FontSize="{StaticResource ListViewHeaderItemThemeFontSize}" Foreground="{StaticResource ApplicationForegroundThemeBrush}"/>
+                            <TextBlock Text="{x:Bind DisplayName}" MinWidth="200" FontSize="{StaticResource ListViewHeaderItemThemeFontSize}" Foreground="{StaticResource ApplicationForegroundThemeBrush}"/>
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -41,9 +46,9 @@
                 </ListView.ItemTemplate>
             </ListView>
             <CommandBar Grid.Row="1" VerticalAlignment="Bottom">
-                <AppBarToggleButton x:Name="favappbtn" Icon="Favorite" Checked="AppBarToggleButton_Checked" Unchecked="AppBarToggleButton_Unchecked"></AppBarToggleButton>
-                <AppBarButton Icon="Delete" Click="AppBarButton_Click_3"></AppBarButton>
-                <AppBarButton Icon="Edit" Click="AppBarButton_Click"></AppBarButton>
+                <AppBarToggleButton x:Name="favappbtn" Label="{xamlcore:Resw PropertyName=fav}" Icon="Favorite" Checked="AppBarToggleButton_Checked" Unchecked="AppBarToggleButton_Unchecked"></AppBarToggleButton>
+                <AppBarButton Icon="Delete" Label="{xamlcore:Resw PropertyName=del}" Click="AppBarButton_Click_3"></AppBarButton>
+                <AppBarButton Icon="Edit" Label="{xamlcore:Resw PropertyName=edit}" Click="AppBarButton_Click"></AppBarButton>
             </CommandBar>
         </Grid>
         <Grid x:Name="editpanel" Visibility="Collapsed">
@@ -51,22 +56,27 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="namebox" Header="名称" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,0,0" Width="200"/>
+            <TextBox x:Name="namebox" Header="名称" VerticalAlignment="Center" HorizontalAlignment="Stretch" Margin="10,0,15,0" />
             <ListView ItemsSource="{x:Bind passwordRecordEntryViewModels}" SelectionMode="None" Margin="0,0,0,45" Grid.Row="1">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.Resources>
                 <ListView.ItemTemplate>
                     <DataTemplate  x:DataType="viewmodels:PasswordRecordEntryViewModel">
                         <StackPanel>
                             <HyperlinkButton Content="{x:Bind DisplayName}" Click="HyperlinkButton_Click"/>
-                            <TextBox Text="{Binding Password,Mode=OneTime}" Visibility="{x:Bind TextBoxVisibility}" TextChanged="TextBox_TextChanged"/>
-                            <PasswordBox Password="{Binding Password,Mode=OneTime}" Visibility="{x:Bind PasswordBoxVisibility}" PasswordChanged="PasswordBox_PasswordChanged"/>
+                            <TextBox Text="{Binding Password,Mode=OneTime}" MinWidth="200"  Visibility="{x:Bind TextBoxVisibility}" TextChanged="TextBox_TextChanged"/>
+                            <PasswordBox Password="{Binding Password,Mode=OneTime}" MinWidth="200" Visibility="{x:Bind PasswordBoxVisibility}" PasswordChanged="PasswordBox_PasswordChanged"/>
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <CommandBar VerticalAlignment="Bottom" Grid.Row="2">
-                <AppBarButton Icon="Add" Click="AppBarButton_Click_4"></AppBarButton>
-                <AppBarButton Icon="Accept" Click="AppBarButton_Click_1"></AppBarButton>
-                <AppBarButton Icon="Cancel" Click="AppBarButton_Click_2"></AppBarButton>
+                <AppBarButton Icon="Add"  Label="{xamlcore:Resw PropertyName=add}" Click="AppBarButton_Click_4"></AppBarButton>
+                <AppBarButton Icon="Accept" Label="{xamlcore:Resw PropertyName=accept}" Click="AppBarButton_Click_1"></AppBarButton>
+                <AppBarButton Icon="Cancel" Label="{xamlcore:Resw PropertyName=crp_cancel}" Click="AppBarButton_Click_2"></AppBarButton>
             </CommandBar>
         </Grid>
     </Grid>

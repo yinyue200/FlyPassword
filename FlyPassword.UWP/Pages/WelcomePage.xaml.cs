@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using FlyPassword.UWP.Views;
 using FlyPassword.UWP.Core;
+using Windows.Storage.Pickers;
+using Windows.Storage;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -59,6 +61,18 @@ namespace FlyPassword.UWP.Pages
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             await new MessageDialog(TmpData.loader.GetString("indevelopment")).ShowAsync();
+        }
+
+        private async void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var fop = new FileOpenPicker();
+            fop.FileTypeFilter.Add(".yfpwd");
+            var file = await fop.PickSingleFileAsync();
+            if (file != null)
+            {
+                await file.CopyAndReplaceAsync(await TmpData.GetPwdFileAsync());
+                Frame.Navigate(typeof(PasswordInputPage));
+            }
         }
     }
 }

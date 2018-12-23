@@ -6,12 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xamlcore="using:FlyPassword.UWP.XamlCore"
+    xmlns:Windows10version1803="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 6)"
     mc:Ignorable="d"
     Loaded="Page_Loaded"
     Unloaded="Page_Unloaded"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView x:Name="nvSample"  ItemInvoked="NvSample_ItemInvoked" Loaded="NvSample_Loaded">
+    <NavigationView x:Name="nvSample" Windows10version1803:IsBackButtonVisible="Collapsed" ItemInvoked="NvSample_ItemInvoked" Loaded="NvSample_Loaded">
         <NavigationView.MenuItems>
             <NavigationViewItem x:Name="viewall" Icon="ViewAll" Content="{xamlcore:Resw PropertyName=mainpage_allitems}" Tag="SamplePage1" />
             <NavigationViewItem x:Name="fav" Icon="Favorite" Content="{xamlcore:Resw PropertyName=mainpage_favitems}" Tag="SamplePage2" />

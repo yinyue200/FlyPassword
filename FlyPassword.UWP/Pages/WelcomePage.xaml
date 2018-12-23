@@ -11,7 +11,7 @@
 
     <StackPanel Padding="10">
         <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="{xamlcore:Resw PropertyName=welcome_greeting}"/>
-        <Button Content="{xamlcore:Resw PropertyName=welcome_useexist}" Click="Button_Click_1"></Button>
+        <Button Content="{xamlcore:Resw PropertyName=welcome_useexist}" Click="Button_Click_2"></Button>
         <Button Content="Import from cloud" Click="Button_Click_1"></Button>
 
         <Button Content="{xamlcore:Resw PropertyName=welcome_createnew}" Click="Button_Click"></Button>

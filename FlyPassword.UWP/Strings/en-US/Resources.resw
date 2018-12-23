@@ -222,4 +222,22 @@
   <data name="addentry" xml:space="preserve">
     <value>Add new entry</value>
   </data>
+  <data name="about_exportfile" xml:space="preserve">
+    <value>Export Data</value>
+  </data>
+  <data name="add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="del" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="fav" xml:space="preserve">
+    <value>Favorite</value>
+  </data>
+  <data name="accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
 </root>
