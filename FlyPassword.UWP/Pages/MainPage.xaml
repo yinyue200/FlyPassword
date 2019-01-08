@@ -23,12 +23,12 @@
                 <NavigationViewItem Icon="Add" Content="{xamlcore:Resw PropertyName=addentry}">
 
                 </NavigationViewItem>
-                <NavigationViewItem >
+                <NavigationViewItem Visibility="Collapsed" >
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE1F6;"></FontIcon>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                <NavigationViewItem Icon="Sync">
+                <NavigationViewItem Visibility="Collapsed" Icon="Sync">
                     
                 </NavigationViewItem>
             </NavigationViewList>

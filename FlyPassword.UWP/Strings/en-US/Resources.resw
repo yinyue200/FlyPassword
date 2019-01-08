@@ -249,4 +249,8 @@
   <data name="pwdg_symbol" xml:space="preserve">
     <value>Symbol</value>
   </data>
+  <data name="welcome_info" xml:space="preserve">
+    <value>You were not born to remember passwords
+FlyPassword is.</value>
+  </data>
 </root>

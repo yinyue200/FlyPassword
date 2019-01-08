@@ -10,10 +10,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid Padding="10">
-        <TextBlock VerticalAlignment="Top" HorizontalAlignment="Left" Style="{StaticResource HeaderTextBlockStyle}" Text="{xamlcore:Resw PropertyName=welcome_greeting}"/>
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Left" >
+            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" Text="{xamlcore:Resw PropertyName=welcome_greeting}"/>
+            <TextBlock Style="{ThemeResource BodyTextBlockStyle}" Text="{xamlcore:Resw PropertyName=welcome_info}"/>
+        </StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <Button Margin="5" Content="{xamlcore:Resw PropertyName=welcome_useexist}" Click="Button_Click_2"></Button>
-            <Button Margin="5" Content="Import from cloud" Click="Button_Click_1"></Button>
+            <Button Visibility="Collapsed" Margin="5" Content="Import from cloud" Click="Button_Click_1"></Button>
 
             <Button Margin="5" Content="{xamlcore:Resw PropertyName=welcome_createnew}" Click="Button_Click"></Button>
         </StackPanel>
