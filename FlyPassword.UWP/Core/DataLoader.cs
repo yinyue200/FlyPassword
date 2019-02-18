@@ -51,6 +51,7 @@ namespace FlyPassword.UWP.Core
         {
             using (var stream = await storageFile.OpenTransactedWriteAsync())
             {
+                stream.Stream.Size = 0;
                 using (var mem = new MemoryStream(Encoding.UTF8.GetBytes(passwordKeeper.SaveToJson())))
                 {
                     EncryptAndDecrypt.Encrypt(mem, password, stream.Stream.AsStreamForWrite());
