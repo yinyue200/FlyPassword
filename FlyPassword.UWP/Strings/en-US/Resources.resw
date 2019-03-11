@@ -253,4 +253,7 @@
     <value>You were not born to remember passwords
 FlyPassword is.</value>
   </data>
+  <data name="lock" xml:space="preserve">
+    <value>Lock</value>
+  </data>
 </root>

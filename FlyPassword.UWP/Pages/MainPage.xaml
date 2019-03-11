@@ -23,7 +23,7 @@
                 <NavigationViewItem Icon="Add" Content="{xamlcore:Resw PropertyName=addentry}">
 
                 </NavigationViewItem>
-                <NavigationViewItem Visibility="Collapsed" >
+                <NavigationViewItem Content="{xamlcore:Resw PropertyName=lock}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE1F6;"></FontIcon>
                     </NavigationViewItem.Icon>

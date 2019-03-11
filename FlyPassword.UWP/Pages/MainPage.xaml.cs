@@ -101,6 +101,12 @@ namespace FlyPassword.UWP.Pages
             {
                 contentFrame.Navigate(typeof(NewRecordPage));
             }
+            else if (addnewentrybt.SelectedIndex == 1)
+            {
+                TmpData.Password = null;
+                TmpData.PasswordKeeper = null;
+                Frame.Navigate(typeof(PasswordInputPage));
+            }
             else if (addnewentrybt.SelectedIndex == -1)
             {
                 return;

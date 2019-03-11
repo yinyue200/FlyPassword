@@ -252,4 +252,7 @@
   <data name="welcome_info" xml:space="preserve">
     <value>FlyPassword 安全地管理您的密码和各种凭据。让您的生活变得轻松。 您需要记住的只是一个​主密码。我们通过 AES-256 加密您的数据，保障您的数据安全。</value>
   </data>
+  <data name="lock" xml:space="preserve">
+    <value>锁定</value>
+  </data>
 </root>
